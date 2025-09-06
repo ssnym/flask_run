@@ -4,7 +4,7 @@
 
 ## To run the code run -
 
-### create a file .flaskenv in project root folder as
+### create a file  .flaskenv  in project root folder as
 
 ```python
 FLASK_APP = project_run
