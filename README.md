@@ -2,7 +2,7 @@
 
 ## Video Source - <a href ='https://www.youtube.com/watch?v=Qr4QMBUPxWo'>Video </a>
 
-## To run the code run -
+## To run the code :
 
 ### create a file  .flaskenv  in project root folder as
 
