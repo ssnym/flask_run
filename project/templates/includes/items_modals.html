@@ -1,0 +1,79 @@
+<!-- Bootstrap Modal -->
+
+<!-- <style>
+    .modal-content{
+        background-color: #212121;
+
+    }
+</style> -->
+
+<!-- More Info -->
+<div class="modal fade" id="Modal-Moreinfo-{{ item.id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">
+                    {{ item.name }}
+                </h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- Here goes the text/paragraph -->
+                {{ item.description }}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Purchase Confirmation -->
+<div class="modal fade" id="Modal-Purchase-Confirm-{{ item.id }}" tabindex="-1" aria-labelledby="ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">
+                    {{ item.name }}
+                </h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- Here goes the text/paragraph -->
+                <h5 class="text-center">
+                    Are you sure to buy {{ item.name }} for {{ item.display_price }}
+                </h5>
+                <br>
+                <h6 class="text-center">
+                    By clicking Purchase Item, you will purchase this item.
+                </h6>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-between">
+                <!-- Force form to align left -->
+                <div class="me-auto">
+                    <form method="post">
+                        {{ purchase_form.hidden_tag() }}
+                        
+                        <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.name }}">
+                        {{ purchase_form.submit(class="btn btn-success") }}
+                    </form>
+                </div>
+
+                <!-- Close button aligned right -->
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

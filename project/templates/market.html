@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Market Page
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-8">
+        <h2 class="text-center m-2"> खरीदने के लिए उपलब्ध वस्तुएं हैं: </h2>
+
+        <div class="position-relative overflow-hidden p-1 p-md-4 m-md-2 bg-dark rounded-3">
+            <div class="table-responsive">
+                <table class="table table-hover table-dark text-center align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <!-- {% for key in items %}
+                            <th scope="col">{{key}}</th>
+                            {% endfor %}
+                            <th scope="col">Options</th> -->
+
+                            <th scope="col">ID </th>
+                            <th scope="col">Name </th>
+                            <th scope="col">Barcode</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows inside the Table Here : -->
+                        {% for item in items %}
+                        {% include 'includes/items_modals.html' %}
+
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.barcode }}</td>
+                            <td>{{ item.display_price }}</td>
+                            <td>
+                                <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#Modal-Moreinfo-{{ item.id }}">More Info</button>
+                                <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-Purchase-Confirm-{{ item.id }}">Purchase</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-4" >
+        <h2 class="text-center m-2"> स्वामित्व की वस्तुएं हैं: </h2>
+        <p class="text-center">Click on Sell to put an item back on the Market</p>
+        <br>
+        <div class="row">
+            {% for owned_item in owned_items %}
+            {% include 'includes/owned_items_modals.html' %}
+            <div class="col-md-6">
+                <div style="margin-bottom: 5px;" class="card text-center bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">{{owned_item.name}}</h5>
+                        <button type="button" class="btn btn-danger" style="margin-bottom: 5px;" data-bs-toggle="modal" data-bs-target="#Modal-Sell-Confirm-{{ owned_item.id }}"">
+                            Sell
+                        </button>
+                        <p class="card-text"><strong>Price : {{owned_item.display_price}}</strong></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<!-- Bootstrap Modal -->
+
+<!-- Sell Confirmation -->
+
+<div class="modal fade" id="Modal-Sell-Confirm-{{ owned_item.id }}" tabindex="-1" aria-labelledby="ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="ModalLabel">
+                    {{ owned_item.name }}
+                </h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- Here goes the text/paragraph -->
+                <h5 class="text-center">
+                    Are you sure to SELL {{ owned_item.name }} for {{ owned_item.display_price }}
+                </h5>
+                <br>
+                <h6 class="text-center">
+                    By clicking SELL Item, you will put this item back on market.
+                </h6>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-between">
+                <!-- Force form to align left -->
+                <div class="me-auto">
+                    <form method="post">
+                        {{ sell_form.hidden_tag() }}
+                        
+                        <input id="sell_item" name="sell_item" type="hidden" value="{{ owned_item.name }}">
+                        {{ sell_form.submit(class="btn btn-success") }}
+                    </form>
+                </div>
+
+                <!-- Close button aligned right -->
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
