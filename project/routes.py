@@ -9,8 +9,9 @@ from flask_login import login_user, logout_user , login_required, current_user
 def home_page():
     return render_template('home.html')
 
-@app.route('/profile/<username>')
-def profile_page(username):
+@app.route('/profile/')
+def profile_page():
+    username = current_user
     return render_template('file_3_profile.html', username = username)
 
 @app.route('/market', methods=['GET', 'POST'])
