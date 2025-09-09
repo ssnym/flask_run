@@ -11,8 +11,9 @@ def home_page():
 
 @app.route('/profile/')
 def profile_page():
-    username = current_user
-    return render_template('file_3_profile.html', username = username)
+    # username = current_user
+    owned_items = Item.query.filter_by(owner=current_user.id)
+    return render_template('file_3_profile.html', owned_items = owned_items)
 
 @app.route('/market', methods=['GET', 'POST'])
 @login_required

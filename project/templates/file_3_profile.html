@@ -6,6 +6,29 @@ Profile Page
 
 {% block content %}
 
-<h2>Welcome {{username}} </h2>
+<div class="text-center">
+    <h2>Welcome {{current_user}} </h2>
+    <h2>Current Budget : {{current_user.display_budget}}</h2>
+    <h2>Items Owned : </h2>
+
+</div>
+
+
+<div class="row">
+    {% for owned_item in owned_items %}
+    <div class="col-md-6">
+        <div style="margin-bottom: 5px;" class="card text-center bg-dark">
+            <div class="card-body">
+                <h5 class="card-title">{{owned_item.name}}</h5>
+                <p class=" card-text"><strong>Price : {{owned_item.display_price}}</strong></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
 
 {% endblock %}
